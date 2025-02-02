@@ -1,12 +1,10 @@
 package com.dimas.networkexercise.presentation.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.dimas.networkexercise.databinding.ItemMovieBinding
+import com.dimas.networkexercise.databinding.ItemDiseaseBinding
 import com.dimas.networkexercise.domain.model.MachineDisease
 
 class DiseaseAdapter(
@@ -14,7 +12,7 @@ class DiseaseAdapter(
 ): RecyclerView.Adapter<DiseaseAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemDiseaseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(binding)
     }
 
@@ -30,7 +28,7 @@ class DiseaseAdapter(
         notifyDataSetChanged()
     }
 
-    inner class MovieViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemDiseaseBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: MachineDisease) {
             with(binding) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Network Exercise</string>
+    <string name="app_name">Sewing Machine Disease</string>
     <string name="label_login">Login</string>
     <string name="message_login">Silahkan gunakan akun yang anda miliki untuk dapat melanjutkan</string>
     <string name="label_phone_number">No. Handphone</string>
