@@ -3,17 +3,12 @@ package com.dimas.networkexercise.data
 import com.dimas.networkexercise.data.request.LoginRequest
 import com.dimas.networkexercise.data.response.BaseResponse
 import com.dimas.networkexercise.data.response.LoginResponse
-import com.dimas.networkexercise.data.response.MovieResponse
-import okhttp3.MultipartBody
+import com.dimas.networkexercise.data.response.MachineDiseaseResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Multipart
 import retrofit2.http.POST
-import retrofit2.http.Part
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NetworkService {
@@ -26,9 +21,7 @@ interface NetworkService {
     ): Response<BaseResponse<LoginResponse>>
 
     @GET("machine-disease")
-    suspend fun getNowPlaying(
-        @Query("page") page: Int
-    ): Response<BaseResponse<List<MovieResponse>>>
+    suspend fun getDiseases(): Response<BaseResponse<List<MachineDiseaseResponse>>>
 
 
 

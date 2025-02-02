@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dimas.networkexercise.databinding.ItemMovieBinding
-import com.dimas.networkexercise.domain.model.Movie
+import com.dimas.networkexercise.domain.model.MachineDisease
 
-class MovieAdapter(
-    private val context: Context,
-    private val items: MutableList<Movie>
-): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class DiseaseAdapter(
+    private val items: MutableList<MachineDisease>
+): RecyclerView.Adapter<DiseaseAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,25 +25,23 @@ class MovieAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addAll(data: List<Movie>) {
+    fun addAll(data: List<MachineDisease>) {
         items.addAll(data)
         notifyDataSetChanged()
     }
 
     inner class MovieViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: Movie) {
+        fun bind(data: MachineDisease) {
             with(binding) {
-                Glide.with(context).load(data.image).into(imageMovie)
-                textTitle.text = data.title
+                textCode.text = data.code
                 textDesc.text = data.desc
-                textDate.text = data.releaseDate
             }
         }
 
     }
 
-    fun items(): MutableList<Movie> = items
+    fun items(): MutableList<MachineDisease> = items
 
     @SuppressLint("NotifyDataSetChanged")
     fun clear() {

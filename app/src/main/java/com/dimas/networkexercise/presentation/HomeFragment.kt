@@ -10,11 +10,10 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dimas.networkexercise.base.AppModule
-import com.dimas.networkexercise.presentation.adapter.MovieAdapter
+import com.dimas.networkexercise.presentation.adapter.DiseaseAdapter
 import com.dimas.networkexercise.databinding.FragmentHomeBinding
-import com.dimas.networkexercise.domain.model.Movie
+import com.dimas.networkexercise.domain.model.MachineDisease
 import com.dimas.networkexercise.presentation.viewmodel.HomeViewModel
 import com.dimas.networkexercise.utils.Error
 import com.dimas.networkexercise.utils.Initiate
@@ -29,7 +28,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
 
-    private var adapter: MovieAdapter? = null
+    private var adapter: DiseaseAdapter? = null
 
     private var page = 1
     private var nextPage = 1
@@ -54,26 +53,21 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        context?.let {
-            binding?.apply {
-                if (adapter == null) adapter = MovieAdapter(it, mutableListOf())
-                listMovie.apply {
-                    setHasFixedSize(true)
-                    layoutManager = LinearLayoutManager(context)
-                    adapter = this@HomeFragment.adapter
-                }
-
-                swpHome.setOnRefreshListener {
-                    swpHome.isRefreshing = false
-                    reset()
-                }
+        binding?.apply {
+            if (adapter == null) adapter = DiseaseAdapter(mutableListOf())
+            listDisease.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context)
+                adapter = this@HomeFragment.adapter
             }
 
-            observer(view.context)
-
-            getListMovie()
+            swpHome.setOnRefreshListener {
+                swpHome.isRefreshing = false
+                reset()
+            }
         }
-
+        observer(view.context)
+        getListMovie()
     }
 
     private fun reset() {
@@ -86,7 +80,7 @@ class HomeFragment : Fragment() {
     private fun observer(context: Context) {
         homeViewModel.movie.observeIn(this) {
             when(it) {
-                is Success -> showListMovie(it.data)
+                is Success -> showListDisease(it.data)
                 is Error -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 is Loading -> showLoader(it.isLoading)
                 is Initiate -> {}
@@ -97,11 +91,11 @@ class HomeFragment : Fragment() {
     private fun showLoader(isLoading: Boolean) {
         binding?.apply {
             pbHome.isVisible = isLoading
-            if (page == 1) listMovie.isVisible = !isLoading
+            if (page == 1) listDisease.isVisible = !isLoading
         }
     }
 
-    private fun showListMovie(data: List<Movie>) {
+    private fun showListDisease(data: List<MachineDisease>) {
         adapter?.addAll(data)
         nextPage = page.plus(1)
     }

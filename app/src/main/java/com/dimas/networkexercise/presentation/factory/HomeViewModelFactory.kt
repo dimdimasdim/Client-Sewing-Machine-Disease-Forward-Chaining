@@ -2,11 +2,11 @@ package com.dimas.networkexercise.presentation.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dimas.networkexercise.domain.MovieRepository
+import com.dimas.networkexercise.domain.DiseaseRepository
 import com.dimas.networkexercise.presentation.viewmodel.HomeViewModel
 
 class HomeViewModelFactory(
-    private val repository: MovieRepository
+    private val repository: DiseaseRepository
 ): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

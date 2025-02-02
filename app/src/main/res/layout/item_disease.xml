@@ -16,49 +16,31 @@
         android:clipToPadding="false">
 
         <ImageView
-            android:id="@+id/imageMovie"
+            android:id="@+id/imageDisease"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            tool:src="@tools:sample/avatars"
+            android:src="@drawable/ic_disease"
             android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
 
         <TextView
-            android:id="@+id/textTitle"
-            app:layout_constraintStart_toEndOf="@+id/imageMovie"
+            android:id="@+id/textDesc"
+            app:layout_constraintStart_toEndOf="@+id/imageDisease"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imageMovie"
+            app:layout_constraintTop_toTopOf="@id/imageDisease"
             android:layout_marginStart="@dimen/dimen_12dp"
             android:layout_marginEnd="@dimen/dimen_10dp"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            tool:text="@string/label_product"
-            android:maxLines="1"
-            android:ellipsize="end"
             android:textSize="@dimen/dimen_16sp"
             android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/textDesc"
-            app:layout_constraintStart_toEndOf="@+id/imageMovie"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitle"
-            android:layout_marginStart="@dimen/dimen_12dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_marginEnd="@dimen/dimen_10dp"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            tool:text="@string/label_small_price"
-            android:layout_marginTop="@dimen/dimen_6dp"
-            android:textSize="@dimen/dimen_14sp"/>
-
 
         <TextView
-            android:id="@+id/textDate"
-            app:layout_constraintBottom_toBottomOf="@id/imageMovie"
+            android:id="@+id/textCode"
+            app:layout_constraintBottom_toBottomOf="@id/imageDisease"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/dimen_10dp"
             android:layout_width="wrap_content"

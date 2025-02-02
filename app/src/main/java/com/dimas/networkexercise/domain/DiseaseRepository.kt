@@ -2,20 +2,20 @@ package com.dimas.networkexercise.domain
 
 import com.dimas.networkexercise.data.NetworkService
 import com.dimas.networkexercise.data.response.BaseError
-import com.dimas.networkexercise.data.response.mapToMovie
-import com.dimas.networkexercise.domain.model.Movie
+import com.dimas.networkexercise.data.response.mapToDisease
+import com.dimas.networkexercise.domain.model.MachineDisease
 import com.dimas.networkexercise.utils.NetworkState
 import com.dimas.networkexercise.utils.parseError
 
-class MovieRepository(private val service: NetworkService) {
+class DiseaseRepository(private val service: NetworkService) {
 
-    suspend fun getMovies(page: Int): NetworkState<List<Movie>> {
+    suspend fun getDiseases(): NetworkState<List<MachineDisease>> {
         return try {
-            val response = service.getNowPlaying(page)
+            val response = service.getDiseases()
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    body.data?.mapToMovie()?.let {
+                    body.data?.mapToDisease()?.let {
                         NetworkState.Success(it)
                     } ?:
                     run {
