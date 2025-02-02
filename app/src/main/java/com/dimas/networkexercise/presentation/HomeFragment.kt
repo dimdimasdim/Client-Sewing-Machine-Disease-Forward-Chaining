@@ -34,20 +34,6 @@ class HomeFragment : Fragment() {
     private var page = 1
     private var nextPage = 1
 
-    private val scrollListener = object: RecyclerView.OnScrollListener () {
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            super.onScrolled(recyclerView, dx, dy)
-            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-            if (adapter == null) return
-            val totalItemCount = adapter?.itemCount ?: 0
-            val lastVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition()
-            val lastIndex = adapter?.items()?.lastIndex ?: 0
-            if (totalItemCount <= 0) return
-            if (lastVisibleItem != lastIndex) return
-            if (page >= nextPage) return
-            loadItems()
-        }
-    }
 
     companion object {
         @JvmStatic
@@ -86,8 +72,6 @@ class HomeFragment : Fragment() {
             observer(view.context)
 
             getListMovie()
-
-            initListener()
         }
 
     }
@@ -97,13 +81,6 @@ class HomeFragment : Fragment() {
         nextPage = 1
         adapter?.clear()
         getListMovie()
-    }
-
-    private fun initListener() {
-        binding?.listMovie?.apply {
-            removeOnScrollListener(scrollListener)
-            addOnScrollListener(scrollListener)
-        }
     }
 
     private fun observer(context: Context) {
@@ -130,12 +107,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getListMovie() {
-       homeViewModel.getMovie()
-    }
-
-    private fun loadItems() {
-        page += 1
-        homeViewModel.getMovie(page)
+       homeViewModel.getDisease()
     }
 
 

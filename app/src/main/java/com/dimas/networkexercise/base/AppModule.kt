@@ -32,7 +32,7 @@ object AppModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkHttpClient())
-            .baseUrl("http://127.0.0.1:50/api/")
+            .baseUrl("Change to your connection")
             .build()
     }
 

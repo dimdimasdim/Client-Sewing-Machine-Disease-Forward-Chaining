@@ -25,7 +25,7 @@ interface NetworkService {
         @Body loginRequest: LoginRequest
     ): Response<BaseResponse<LoginResponse>>
 
-    @GET("3/movie/now_playing")
+    @GET("machine-disease")
     suspend fun getNowPlaying(
         @Query("page") page: Int
     ): Response<BaseResponse<List<MovieResponse>>>
