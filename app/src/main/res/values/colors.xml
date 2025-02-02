@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_text_black">#323C5F</color>
+    <color name="color_primary">#6200EE</color>
+    <color name="color_text_grey">#524B6B</color>
+    <color name="color_text_light_grey">#A8ACB4</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#ECF1FF</color>
+    <color name="color_border_grey">#ECF1FF</color>
+    <color name="color_secondary">#03DAC6</color>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Network Exercise</string>
+    <string name="label_login">Login</string>
+    <string name="message_login">Silahkan gunakan akun yang anda miliki untuk dapat melanjutkan</string>
+    <string name="label_phone_number">No. Handphone</string>
+    <string name="label_password">Password</string>
+    <string name="label_forgot_password">Lupa Kata Sandi Anda?</string>
+    <string name="label_log_in">Login</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_home">Home</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_username">Username</string>
+    <string name="label_log_out">Log Out</string>
+</resources>

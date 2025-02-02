@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingHorizontal="@dimen/dimen_32dp"
+    tools:context=".presentation.LoginActivity">
+
+    <TextView
+        android:id="@+id/labelLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/label_login"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_28sp"
+        android:layout_marginTop="@dimen/dimen_32dp"/>
+
+    <TextView
+        android:id="@+id/labelMsgLogin"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/labelLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:textAlignment="center"
+        android:text="@string/message_login"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfUsername"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/labelMsgLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimen_26dp"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionDone"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/tfUsername"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#797B89"
+        android:hint="@string/label_password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_forgot_password"
+        android:textColor="@color/color_primary"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:background="?selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@+id/tfPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/dimen_4dp"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@id/textForgotPassword"
+        app:layout_constraintStart_toStartOf="@id/tfPassword"
+        app:layout_constraintEnd_toEndOf="@id/tfPassword"
+        android:textColor="@color/color_secondary"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="@dimen/dimen_8dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:textAllCaps="true"
+        android:text="@string/label_log_in"
+        android:paddingVertical="12dp"
+        android:textSize="16sp"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/textForgotPassword"
+        app:layout_constraintStart_toStartOf="@id/tfPassword"
+        app:layout_constraintEnd_toEndOf="@id/tfPassword"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
