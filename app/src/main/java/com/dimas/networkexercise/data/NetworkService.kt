@@ -18,7 +18,7 @@ import retrofit2.http.Query
 
 interface NetworkService {
 
-    @POST("/login")
+    @POST("login")
     suspend fun postLogin(
         @Header("is_mock") isMock: Boolean = true,
         @Header("is_guest") isGuest: Boolean = true,

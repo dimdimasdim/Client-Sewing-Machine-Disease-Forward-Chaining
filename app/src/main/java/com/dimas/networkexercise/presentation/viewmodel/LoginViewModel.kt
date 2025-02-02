@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val repository: LoginRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _login = MutableStateFlow<UIState<User>>(Initiate())
     val login: StateFlow<UIState<User>> = _login
@@ -31,15 +31,16 @@ class LoginViewModel(
             val process = async(Dispatchers.IO) {
                 repository.postLogin(LoginRequest(username, password))
             }
-            when(val state = process.await()) {
+            when (val state = process.await()) {
                 is NetworkState.Success -> {
                     _login.value = Loading(false)
                     _login.value = Success(data = state.data)
                 }
-                is NetworkState.Error ->{
+
+                is NetworkState.Error -> {
                     _login.value = Loading(false)
                     _login.value =
-                        Error((state.error as BaseError).error)
+                        Error(state.error.message.orEmpty())
                 }
             }
         }

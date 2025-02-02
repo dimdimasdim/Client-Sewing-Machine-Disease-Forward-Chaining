@@ -34,7 +34,7 @@
         android:text="@string/message_login"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfUsername"
+        android:id="@+id/tfNPM"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/labelMsgLogin"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,21 +42,21 @@
         android:layout_marginTop="@dimen/dimen_26dp"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/label_username">
+        android:hint="@string/label_npm">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtUsername"
+            android:id="@+id/edtNPM"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="numberDecimal"
             android:imeOptions="actionDone"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfPassword"
+        android:id="@+id/tfFullName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@id/tfUsername"
+        app:layout_constraintTop_toBottomOf="@id/tfNPM"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dimen_16dp"
@@ -64,36 +64,23 @@
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="#797B89"
-        android:hint="@string/label_password">
+        android:hint="@string/label_fullname">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtPassword"
+            android:id="@+id/edtFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:imeOptions="actionDone"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_forgot_password"
-        android:textColor="@color/color_primary"
-        android:layout_marginTop="@dimen/dimen_12dp"
-        android:background="?selectableItemBackground"
-        app:layout_constraintTop_toBottomOf="@+id/tfPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="@dimen/dimen_4dp"/>
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@id/textForgotPassword"
-        app:layout_constraintStart_toStartOf="@id/tfPassword"
-        app:layout_constraintEnd_toEndOf="@id/tfPassword"
-        android:textColor="@color/color_secondary"
+        app:layout_constraintTop_toBottomOf="@id/tfFullName"
+        app:layout_constraintStart_toStartOf="@id/tfFullName"
+        app:layout_constraintEnd_toEndOf="@id/tfFullName"
+        android:textColor="@android:color/white"
         style="@style/Widget.MaterialComponents.Button"
         app:cornerRadius="@dimen/dimen_8dp"
         android:layout_marginTop="@dimen/dimen_16dp"
@@ -107,9 +94,9 @@
     <ProgressBar
         android:id="@+id/pbLogin"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/textForgotPassword"
-        app:layout_constraintStart_toStartOf="@id/tfPassword"
-        app:layout_constraintEnd_toEndOf="@id/tfPassword"
+        app:layout_constraintTop_toBottomOf="@id/tfFullName"
+        app:layout_constraintStart_toStartOf="@id/tfFullName"
+        app:layout_constraintEnd_toEndOf="@id/tfFullName"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

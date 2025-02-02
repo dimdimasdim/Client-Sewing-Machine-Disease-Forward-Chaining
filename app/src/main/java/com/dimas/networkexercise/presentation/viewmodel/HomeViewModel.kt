@@ -37,7 +37,7 @@ class HomeViewModel(private val repository: MovieRepository): ViewModel() {
                 }
                 is NetworkState.Error ->{
                     _movie.value = Loading(false)
-                    _movie.value = Error((state.error as BaseError).error)
+                    _movie.value = Error(state.error.message.orEmpty())
                 }
             }
         }

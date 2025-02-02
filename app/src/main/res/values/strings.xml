@@ -11,4 +11,6 @@
     <string name="label_profile">Profile</string>
     <string name="label_username">Username</string>
     <string name="label_log_out">Log Out</string>
+    <string name="label_fullname">Nama Lengkap</string>
+    <string name="label_npm">NPM</string>
 </resources>
