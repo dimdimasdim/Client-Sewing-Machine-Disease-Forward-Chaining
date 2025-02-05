@@ -1,10 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.SolutionActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:titleTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_hasil_inferensi"
+        android:textSize="@dimen/dimen_24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="@dimen/dimen_16dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16dp"
+        app:cardElevation="@dimen/dimen_4dp"
+        app:cardCornerRadius="@dimen/dimen_8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp">
+
+            <TextView
+                android:id="@+id/solution_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/label_kode_solusi_s"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/solution_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Gigi mesin bermasalah. Membersihkan mesin dari sisa benang atau serat kain yang menumpuk di gigi mesin serta memberikan minyak pelumas pada gigi dan penutup mesin."
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16dp"
+        app:cardElevation="@dimen/dimen_4dp"
+        app:cardCornerRadius="@dimen/dimen_8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp">
+
+            <TextView
+                android:id="@+id/rule_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/label_kode_aturan_s"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/rule_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/message_rule"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/dimen_8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_16dp"
+        app:cardElevation="@dimen/dimen_4dp"
+        app:cardCornerRadius="@dimen/dimen_8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp">
+
+            <TextView
+                android:id="@+id/triggered_fact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/label_fakta_yang_dipicu_s"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnFinishs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_selesai_diagnosis"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_32dp"/>
+</LinearLayout>

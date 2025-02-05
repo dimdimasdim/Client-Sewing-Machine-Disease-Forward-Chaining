@@ -13,4 +13,10 @@
     <string name="label_log_out">Log Out</string>
     <string name="label_fullname">Nama Lengkap</string>
     <string name="label_npm">NPM</string>
+    <string name="label_kode_solusi_s">Kode Solusi: %s</string>
+    <string name="label_kode_aturan_s">Kode Aturan: %s</string>
+    <string name="label_fakta_yang_dipicu_s">Fakta yang Dipicu: %s</string>
+    <string name="label_selesai_diagnosis">Selesai Diagnosis</string>
+    <string name="label_hasil_inferensi">Hasil Inferensi</string>
+    <string name="message_rule">Aturan yang dipicu berdasarkan fakta yang diberikan.</string>
 </resources>
