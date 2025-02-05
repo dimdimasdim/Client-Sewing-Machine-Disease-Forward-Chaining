@@ -8,7 +8,8 @@ import com.dimas.networkexercise.databinding.ItemDiseaseBinding
 import com.dimas.networkexercise.domain.model.MachineDisease
 
 class DiseaseAdapter(
-    private val items: MutableList<MachineDisease>
+    private val items: MutableList<MachineDisease>,
+    private val onItemClick: (code: String) -> Unit
 ): RecyclerView.Adapter<DiseaseAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -34,6 +35,9 @@ class DiseaseAdapter(
             with(binding) {
                 textCode.text = data.code
                 textDesc.text = data.desc
+                itemDisease.setOnClickListener {
+                    onItemClick.invoke(data.code)
+                }
             }
         }
 

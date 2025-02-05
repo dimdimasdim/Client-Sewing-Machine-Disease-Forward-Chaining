@@ -10,6 +10,8 @@
     android:layout_marginVertical="@dimen/dimen_4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemDisease"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_8dp"

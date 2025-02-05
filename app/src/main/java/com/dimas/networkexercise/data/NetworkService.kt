@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NetworkService {
@@ -23,6 +24,8 @@ interface NetworkService {
     @GET("machine-disease")
     suspend fun getDiseases(): Response<BaseResponse<List<MachineDiseaseResponse>>>
 
+    @GET("next-codes/{code}")
+    suspend fun getNextCode(@Path("code") code: String): Response<BaseResponse<List<String>>>
 
 
 }

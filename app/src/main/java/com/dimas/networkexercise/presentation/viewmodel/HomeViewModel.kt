@@ -1,5 +1,6 @@
 package com.dimas.networkexercise.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimas.networkexercise.domain.DiseaseRepository
@@ -18,38 +19,61 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: DiseaseRepository): ViewModel() {
 
-    private val _movie = MutableStateFlow<UIState<List<MachineDisease>>>(Initiate())
-    val movie: StateFlow<UIState<List<MachineDisease>>> = _movie
+    private val _disease = MutableStateFlow<UIState<List<MachineDisease>>>(Initiate())
+    val disease: StateFlow<UIState<List<MachineDisease>>> = _disease
 
     private val storeAllData: MutableList<MachineDisease> = mutableListOf()
 
     private val _filteredDiseases = MutableStateFlow<List<MachineDisease>>(emptyList())
     val filteredDiseases: StateFlow<List<MachineDisease>> = _filteredDiseases
 
+    private val _nextCode = MutableStateFlow<UIState<String>>(Initiate())
+    val nextCode: StateFlow<UIState<String>> = _nextCode
+
     fun getDisease() {
         viewModelScope.launch(Dispatchers.Main) {
-            _movie.value = Loading(true)
+            _disease.value = Loading(true)
             storeAllData.clear()
             val process = async(Dispatchers.IO) {
                 repository.getDiseases()
             }
             when(val state = process.await()) {
                 is NetworkState.Success -> {
-                    _movie.value = Loading(false)
+                    _disease.value = Loading(false)
                     storeAllData.addAll(state.data)
-                    _movie.value = Success(data = state.data)
+                    _disease.value = Success(data = state.data)
                 }
                 is NetworkState.Error ->{
-                    _movie.value = Loading(false)
-                    _movie.value = Error(state.error.message.orEmpty())
+                    _disease.value = Loading(false)
+                    _disease.value = Error(state.error.message.orEmpty())
                 }
             }
         }
     }
 
-    fun filteredByCode(code: String) {
+    fun getNextCode(currentCode: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _nextCode.value = Loading(true)
+            val process = async(Dispatchers.IO) {
+                repository.getNextCode(currentCode)
+            }
+            when(val state = process.await()) {
+                is NetworkState.Success -> {
+                    _nextCode.value = Loading(false)
+                    _nextCode.value = Success(data = state.data)
+                }
+                is NetworkState.Error ->{
+                    _nextCode.value = Loading(false)
+                    _nextCode.value = Error(state.error.message.orEmpty())
+                }
+            }
+        }
+    }
+
+    fun filteredByCode(currentCode: String) {
+        Log.d("debug", "lallalalala $currentCode")
         viewModelScope.launch {
-            val filteredList = storeAllData.filter { it.code == code }
+            val filteredList = storeAllData.filter { it.code == currentCode }
             _filteredDiseases.value = filteredList
         }
     }

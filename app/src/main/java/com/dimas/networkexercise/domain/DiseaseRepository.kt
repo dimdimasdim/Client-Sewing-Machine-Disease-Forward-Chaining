@@ -32,4 +32,22 @@ class DiseaseRepository(private val service: NetworkService) {
             NetworkState.Error(error = e)
         }
     }
+
+    suspend fun getNextCode(code: String): NetworkState<String> {
+        return try {
+            val response = service.getNextCode(code)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+                    NetworkState.Success(body.data?.firstOrNull().orEmpty())
+                } else {
+                    parseError(response)
+                }
+            } else {
+                parseError(response)
+            }
+        } catch (e: Exception) {
+            NetworkState.Error(error = e)
+        }
+    }
 }

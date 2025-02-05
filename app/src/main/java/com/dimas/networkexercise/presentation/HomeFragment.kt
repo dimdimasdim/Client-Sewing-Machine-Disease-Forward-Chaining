@@ -54,7 +54,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
-            if (adapter == null) adapter = DiseaseAdapter(mutableListOf())
+            if (adapter == null) adapter = DiseaseAdapter(mutableListOf()) { currentCode ->
+                homeViewModel.getNextCode(currentCode)
+            }
             listDisease.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
@@ -78,9 +80,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun observer(context: Context) {
-        homeViewModel.movie.observeIn(this) {
+        homeViewModel.disease.observeIn(this) {
             when(it) {
                 is Success -> showListDisease(it.data)
+                is Error -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                is Loading -> showLoader(it.isLoading)
+                is Initiate -> {}
+            }
+        }
+
+        homeViewModel.nextCode.observeIn(this) {
+            when(it) {
+                is Success -> if (it.data.isEmpty()) {
+                    // TOD0: find solution
+                }else {
+                    homeViewModel.filteredByCode(it.data)
+                }
                 is Error -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 is Loading -> showLoader(it.isLoading)
                 is Initiate -> {}
