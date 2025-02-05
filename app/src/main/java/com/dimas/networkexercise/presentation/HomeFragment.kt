@@ -86,6 +86,13 @@ class HomeFragment : Fragment() {
                 is Initiate -> {}
             }
         }
+
+        homeViewModel.filteredDiseases.observeIn(this) {
+           adapter?.apply {
+               clear()
+               addAll(it)
+           }
+        }
     }
 
     private fun showLoader(isLoading: Boolean) {

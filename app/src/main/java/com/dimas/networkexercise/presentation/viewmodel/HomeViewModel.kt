@@ -21,15 +21,22 @@ class HomeViewModel(private val repository: DiseaseRepository): ViewModel() {
     private val _movie = MutableStateFlow<UIState<List<MachineDisease>>>(Initiate())
     val movie: StateFlow<UIState<List<MachineDisease>>> = _movie
 
+    private val storeAllData: MutableList<MachineDisease> = mutableListOf()
+
+    private val _filteredDiseases = MutableStateFlow<List<MachineDisease>>(emptyList())
+    val filteredDiseases: StateFlow<List<MachineDisease>> = _filteredDiseases
+
     fun getDisease() {
         viewModelScope.launch(Dispatchers.Main) {
             _movie.value = Loading(true)
+            storeAllData.clear()
             val process = async(Dispatchers.IO) {
                 repository.getDiseases()
             }
             when(val state = process.await()) {
                 is NetworkState.Success -> {
                     _movie.value = Loading(false)
+                    storeAllData.addAll(state.data)
                     _movie.value = Success(data = state.data)
                 }
                 is NetworkState.Error ->{
@@ -37,6 +44,13 @@ class HomeViewModel(private val repository: DiseaseRepository): ViewModel() {
                     _movie.value = Error(state.error.message.orEmpty())
                 }
             }
+        }
+    }
+
+    fun filteredByCode(code: String) {
+        viewModelScope.launch {
+            val filteredList = storeAllData.filter { it.code == code }
+            _filteredDiseases.value = filteredList
         }
     }
 }
