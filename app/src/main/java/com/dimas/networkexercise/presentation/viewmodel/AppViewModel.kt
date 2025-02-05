@@ -71,7 +71,6 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
     }
 
     fun filteredByCode(currentCode: String) {
-        Log.d("debug", "lallalalala $currentCode")
         viewModelScope.launch {
             val filteredList = storeAllData.filter { it.code == currentCode }
             _filteredDiseases.value = filteredList

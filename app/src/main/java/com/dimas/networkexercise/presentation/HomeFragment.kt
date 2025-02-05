@@ -92,7 +92,9 @@ class HomeFragment : Fragment() {
         homeViewModel.nextCode.observeIn(this) {
             when(it) {
                 is Success -> if (it.data.isEmpty()) {
-                    // TOD0: find solution
+                    activity?.let { act ->
+                        SolutionActivity.start(act)
+                    }
                 }else {
                     homeViewModel.filteredByCode(it.data)
                 }
