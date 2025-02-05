@@ -38,7 +38,7 @@
             android:padding="@dimen/dimen_16dp">
 
             <TextView
-                android:id="@+id/solution_code"
+                android:id="@+id/solutionCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/label_kode_solusi_s"
@@ -46,7 +46,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/solution_desc"
+                android:id="@+id/solutionDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Gigi mesin bermasalah. Membersihkan mesin dari sisa benang atau serat kain yang menumpuk di gigi mesin serta memberikan minyak pelumas pada gigi dan penutup mesin."
@@ -69,7 +69,7 @@
             android:padding="@dimen/dimen_16dp">
 
             <TextView
-                android:id="@+id/rule_code"
+                android:id="@+id/ruleCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/label_kode_aturan_s"
@@ -100,7 +100,7 @@
             android:padding="@dimen/dimen_16dp">
 
             <TextView
-                android:id="@+id/triggered_fact"
+                android:id="@+id/triggeredFact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/label_fakta_yang_dipicu_s"
@@ -110,7 +110,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnFinishs"
+        android:id="@+id/btnFinish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_selesai_diagnosis"

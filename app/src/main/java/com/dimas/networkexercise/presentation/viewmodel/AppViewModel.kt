@@ -1,9 +1,11 @@
 package com.dimas.networkexercise.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dimas.networkexercise.data.request.InferenceRequest
 import com.dimas.networkexercise.domain.DiseaseRepository
+import com.dimas.networkexercise.domain.model.Fact
+import com.dimas.networkexercise.domain.model.Inference
 import com.dimas.networkexercise.domain.model.MachineDisease
 import com.dimas.networkexercise.utils.Error
 import com.dimas.networkexercise.utils.Initiate
@@ -19,6 +21,8 @@ import kotlinx.coroutines.launch
 
 class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
 
+    val logCode: MutableList<String> = mutableListOf()
+
     private val _disease = MutableStateFlow<UIState<List<MachineDisease>>>(Initiate())
     val disease: StateFlow<UIState<List<MachineDisease>>> = _disease
 
@@ -30,10 +34,14 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
     private val _nextCode = MutableStateFlow<UIState<String>>(Initiate())
     val nextCode: StateFlow<UIState<String>> = _nextCode
 
+    private val _inference = MutableStateFlow<UIState<Inference>>(Initiate())
+    val inference: StateFlow<UIState<Inference>> = _inference
+
     fun getDisease() {
         viewModelScope.launch(Dispatchers.Main) {
             _disease.value = Loading(true)
             storeAllData.clear()
+            logCode.clear()
             val process = async(Dispatchers.IO) {
                 repository.getDiseases()
             }
@@ -60,6 +68,7 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
             when(val state = process.await()) {
                 is NetworkState.Success -> {
                     _nextCode.value = Loading(false)
+                    if (currentCode.isNotEmpty()) logCode.add(currentCode)
                     _nextCode.value = Success(data = state.data)
                 }
                 is NetworkState.Error ->{
@@ -76,4 +85,26 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
             _filteredDiseases.value = filteredList
         }
     }
+
+    fun inference(facts: List<String>) {
+        val request = InferenceRequest(facts = facts)
+        viewModelScope.launch(Dispatchers.Main) {
+            _inference.value = Loading(true)
+            val process = async(Dispatchers.IO) {
+                repository.postInference(request)
+            }
+            when(val state = process.await()) {
+                is NetworkState.Success -> {
+                    _inference.value = Loading(false)
+                    state.data?.let { _inference.value = Success(data = it) }
+                }
+                is NetworkState.Error ->{
+                    _inference.value = Loading(false)
+                    _inference.value = Error(state.error.message.orEmpty())
+                }
+            }
+        }
+    }
+
+    fun getFacts() = Fact(facts = logCode)
 }

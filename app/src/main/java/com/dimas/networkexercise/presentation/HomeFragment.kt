@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
             when(it) {
                 is Success -> if (it.data.isEmpty()) {
                     activity?.let { act ->
-                        SolutionActivity.start(act)
+                        SolutionActivity.start(act, homeViewModel.getFacts())
                     }
                 }else {
                     homeViewModel.filteredByCode(it.data)

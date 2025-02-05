@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dimas.networkexercise.domain.DiseaseRepository
 import com.dimas.networkexercise.presentation.viewmodel.AppViewModel
 
-class HomeViewModelFactory(
+class AppViewModelFactory(
     private val repository: DiseaseRepository
 ): ViewModelProvider.Factory {
 
