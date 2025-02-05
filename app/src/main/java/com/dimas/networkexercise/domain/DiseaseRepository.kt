@@ -20,8 +20,7 @@ class DiseaseRepository(private val service: NetworkService) {
                 if (body != null) {
                     body.data?.mapToDisease()?.let {
                         NetworkState.Success(it)
-                    } ?:
-                    run {
+                    } ?: run {
                         NetworkState
                             .Error(error = BaseError(error = "Null Response"))
                     }
@@ -36,13 +35,16 @@ class DiseaseRepository(private val service: NetworkService) {
         }
     }
 
-    suspend fun getNextCode(code: String): NetworkState<String> {
+    suspend fun getNextCode(code: String): NetworkState<MachineDisease> {
         return try {
             val response = service.getNextCode(code)
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    NetworkState.Success(body.data?.firstOrNull().orEmpty())
+                    NetworkState.Success(
+                        body.data?.map { it.mapToMachineDisease() }?.firstOrNull()
+                            ?: MachineDisease(code = "empty", "empty")
+                    )
                 } else {
                     parseError(response)
                 }

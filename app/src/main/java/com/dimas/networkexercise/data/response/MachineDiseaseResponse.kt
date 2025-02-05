@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 data class MachineDiseaseResponse(
     @SerializedName("code")
     val code: String?,
-    @SerializedName("dsc")
+    @SerializedName("desc")
     val dsc: String?,
     @SerializedName("id")
     val id: Int?

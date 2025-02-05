@@ -31,8 +31,8 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
     private val _filteredDiseases = MutableStateFlow<List<MachineDisease>>(emptyList())
     val filteredDiseases: StateFlow<List<MachineDisease>> = _filteredDiseases
 
-    private val _nextCode = MutableStateFlow<UIState<String>>(Initiate())
-    val nextCode: StateFlow<UIState<String>> = _nextCode
+    private val _nextCode = MutableStateFlow<UIState<MachineDisease>>(Initiate())
+    val nextCode: StateFlow<UIState<MachineDisease>> = _nextCode
 
     private val _inference = MutableStateFlow<UIState<Inference>>(Initiate())
     val inference: StateFlow<UIState<Inference>> = _inference
@@ -79,12 +79,12 @@ class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
         }
     }
 
-    fun filteredByCode(currentCode: String) {
-        viewModelScope.launch {
-            val filteredList = storeAllData.filter { it.code == currentCode }
-            _filteredDiseases.value = filteredList
-        }
-    }
+//    fun filteredByCode(currentCode: String) {
+//        viewModelScope.launch {
+//            val filteredList = storeAllData.filter { it.code == currentCode }
+//            _filteredDiseases.value = filteredList
+//        }
+//    }
 
     fun inference(facts: List<String>) {
         val request = InferenceRequest(facts = facts)

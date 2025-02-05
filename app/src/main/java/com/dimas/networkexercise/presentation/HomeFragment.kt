@@ -91,12 +91,15 @@ class HomeFragment : Fragment() {
 
         homeViewModel.nextCode.observeIn(this) {
             when(it) {
-                is Success -> if (it.data.isEmpty()) {
+                is Success -> if (it.data.code == "empty") {
                     activity?.let { act ->
                         SolutionActivity.start(act, homeViewModel.getFacts())
                     }
                 }else {
-                    homeViewModel.filteredByCode(it.data)
+                    adapter?.apply {
+                        clear()
+                        addAll(listOf(it.data))
+                    }
                 }
                 is Error -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 is Loading -> showLoader(it.isLoading)

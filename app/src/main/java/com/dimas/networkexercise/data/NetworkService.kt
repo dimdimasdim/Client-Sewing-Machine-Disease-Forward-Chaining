@@ -27,7 +27,7 @@ interface NetworkService {
     suspend fun getDiseases(): Response<BaseResponse<List<MachineDiseaseResponse>>>
 
     @GET("next-codes/{code}")
-    suspend fun getNextCode(@Path("code") code: String): Response<BaseResponse<List<String>>>
+    suspend fun getNextCode(@Path("code") code: String): Response<BaseResponse<List<MachineDiseaseResponse>>>
 
     @POST("inference")
     suspend fun inference(@Body request: InferenceRequest): Response<BaseResponse<InferenceResponse>>
