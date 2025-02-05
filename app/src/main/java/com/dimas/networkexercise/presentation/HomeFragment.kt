@@ -14,7 +14,7 @@ import com.dimas.networkexercise.base.AppModule
 import com.dimas.networkexercise.presentation.adapter.DiseaseAdapter
 import com.dimas.networkexercise.databinding.FragmentHomeBinding
 import com.dimas.networkexercise.domain.model.MachineDisease
-import com.dimas.networkexercise.presentation.viewmodel.HomeViewModel
+import com.dimas.networkexercise.presentation.viewmodel.AppViewModel
 import com.dimas.networkexercise.utils.Error
 import com.dimas.networkexercise.utils.Initiate
 import com.dimas.networkexercise.utils.Loading
@@ -23,7 +23,7 @@ import com.dimas.networkexercise.utils.observeIn
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel> { AppModule.homeViewModelFactory }
+    private val homeViewModel by viewModels<AppViewModel> { AppModule.homeViewModelFactory }
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding

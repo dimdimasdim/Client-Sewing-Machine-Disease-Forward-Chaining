@@ -1,7 +1,9 @@
 package com.dimas.networkexercise.data
 
+import com.dimas.networkexercise.data.request.InferenceRequest
 import com.dimas.networkexercise.data.request.LoginRequest
 import com.dimas.networkexercise.data.response.BaseResponse
+import com.dimas.networkexercise.data.response.InferenceResponse
 import com.dimas.networkexercise.data.response.LoginResponse
 import com.dimas.networkexercise.data.response.MachineDiseaseResponse
 import retrofit2.Response
@@ -26,6 +28,9 @@ interface NetworkService {
 
     @GET("next-codes/{code}")
     suspend fun getNextCode(@Path("code") code: String): Response<BaseResponse<List<String>>>
+
+    @POST("inference")
+    suspend fun inference(@Body request: InferenceRequest): Response<BaseResponse<InferenceResponse>>
 
 
 }

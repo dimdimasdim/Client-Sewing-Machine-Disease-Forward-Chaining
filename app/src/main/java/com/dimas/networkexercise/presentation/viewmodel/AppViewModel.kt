@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val repository: DiseaseRepository): ViewModel() {
+class AppViewModel(private val repository: DiseaseRepository): ViewModel() {
 
     private val _disease = MutableStateFlow<UIState<List<MachineDisease>>>(Initiate())
     val disease: StateFlow<UIState<List<MachineDisease>>> = _disease
