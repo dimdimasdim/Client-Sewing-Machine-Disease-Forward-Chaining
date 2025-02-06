@@ -10,6 +10,7 @@ import com.dimas.networkexercise.presentation.adapter.MainPagerAdapter
 import com.dimas.networkexercise.databinding.ActivityMainBinding
 import com.dimas.networkexercise.presentation.HomeFragment
 import com.dimas.networkexercise.presentation.ProfileFragment
+import com.dimas.networkexercise.utils.UserSession
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun initializeToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = getString(R.string.app_name)
+            title = "Hi, ${UserSession.getName()}"
             setDisplayHomeAsUpEnabled(false)
         }
     }

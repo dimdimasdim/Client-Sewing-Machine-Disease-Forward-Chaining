@@ -35,7 +35,7 @@ class DiseaseAdapter(
             with(binding) {
                 textCode.text = data.code
                 textDesc.text = data.desc
-                itemDisease.setOnClickListener {
+                btnChoose.setOnClickListener {
                     onItemClick.invoke(data.code)
                 }
             }

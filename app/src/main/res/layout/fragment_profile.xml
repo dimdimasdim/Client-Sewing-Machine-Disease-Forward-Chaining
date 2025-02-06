@@ -7,6 +7,15 @@
     android:background="@color/white"
     tools:context=".presentation.ProfileFragment">
 
+    <TextView
+        android:id="@+id/textUser"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/dimen_32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"

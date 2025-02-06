@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dimas.networkexercise.MainActivity
 import com.dimas.networkexercise.databinding.FragmentProfileBinding
+import com.dimas.networkexercise.utils.UserSession
 
 class ProfileFragment : Fragment() {
 
@@ -29,6 +30,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding?.textUser?.text = UserSession.getFullUser()
         binding?.btnLogout?.setOnClickListener {
             activity?.let { activity ->
                 doLogOut(activity as MainActivity)

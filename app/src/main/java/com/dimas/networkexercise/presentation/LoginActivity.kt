@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.dimas.networkexercise.MainActivity
 import com.dimas.networkexercise.base.AppModule
-import com.dimas.networkexercise.base.UserSetting
 import com.dimas.networkexercise.databinding.ActivityLoginBinding
 import com.dimas.networkexercise.domain.model.User
 import com.dimas.networkexercise.presentation.viewmodel.LoginViewModel
@@ -16,6 +15,7 @@ import com.dimas.networkexercise.utils.Error
 import com.dimas.networkexercise.utils.Initiate
 import com.dimas.networkexercise.utils.Loading
 import com.dimas.networkexercise.utils.Success
+import com.dimas.networkexercise.utils.UserSession
 import com.dimas.networkexercise.utils.observeIn
 
 
@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun storeUser(npm: String, fullName: String) {
-        UserSetting.storeUser(npm, fullName)
+        UserSession.setUser(fullName, npm)
         moveToMain()
     }
 

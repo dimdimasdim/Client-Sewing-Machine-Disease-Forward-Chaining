@@ -19,4 +19,6 @@
     <string name="label_selesai_diagnosis">Selesai Diagnosis</string>
     <string name="label_hasil_inferensi">Hasil Inferensi</string>
     <string name="message_rule">Aturan yang dipicu berdasarkan fakta yang diberikan.</string>
+    <string name="label_pilih">Pilih</string>
+    <string name="message_intro_app">Diagnosa penyakit mesin jahit, \npilih salah satu gejala yang ada:</string>
 </resources>
