@@ -75,8 +75,12 @@ class SolutionActivity : AppCompatActivity() {
     }
 
     private fun showInference(data: Inference) {
+        val split = data.solutions?.desc?.split(".")
+        val problemD = split?.firstOrNull().orEmpty() + "."
+
         with(binding) {
-            solutionDesc.text = data.solutions?.desc.orEmpty()
+            problem.text = problemD
+            solutionDesc.text =data.solutions?.desc?.replace(problemD, "")
             solutionCode.text = String.format(getString(R.string.label_kode_solusi_s), data.solutions?.code.orEmpty())
             ruleCode.text = String.format(getString(R.string.label_kode_aturan_s), data.triggeredRule?.ruleCode.orEmpty())
             triggeredFact.text = String.format(getString(R.string.label_fakta_yang_dipicu_s), data.triggeredRule?.triggeredFact.orEmpty())
